@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version>org.openjfx:javafx-media:21.0.2</version>
         </dependency>
     </dependencies>
 
