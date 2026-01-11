@@ -1,2 +1,4 @@
 fxComponents\MainNew.class
-fxComponents\FxController.class
+fxComponents\Controller\SingleplayerMenuController.class
+fxComponents\SceneManager.class
+fxComponents\Controller\MainMenuController.class

@@ -1,17 +1,18 @@
-package fxComponents;
+package fxComponents.Controller;
 
+import fxComponents.SceneManager;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Label;
 
 
-public class FxController {
+public class MainMenuController {
     @FXML
     private Label welcomeText;
 
     @FXML
     public void onSingleplayerButtonClick() {
-        welcomeText.setText("Singleplayer ausgewählt");
+        SceneManager.switchTo("Singleplayer.fxml");
     }
 
     public void onMultiplayerButtonClick() {

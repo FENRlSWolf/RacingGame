@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fxComponents.Controller.SingleplayerMenuController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox spacing="20.0">
+        <Label text="Singleplayer ausgewählt"/>
+        <Label text="Streckenauswahl"/>
+        <ComboBox fx:id="trackBox" prefWidth="200" />
+    </VBox>
+</AnchorPane>

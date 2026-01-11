@@ -1,6 +1,8 @@
 C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\Car.java
-C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\fxComponents\FxController.java
+C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\fxComponents\Controller\MainMenuController.java
+C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\fxComponents\Controller\SingleplayerMenuController.java
 C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\fxComponents\MainNew.java
+C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\fxComponents\SceneManager.java
 C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\Helpers\Vector2.java
 C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\Main.java
 C:\Users\Admin\IdeaProjects\RacingGame\src\main\java\Object.java

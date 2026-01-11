@@ -9,11 +9,10 @@ import javafx.stage.Stage;
 public class MainNew extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainNew.class.getResource("/ui/MainMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Testseite");
-        stage.setScene(scene);
-        stage.show();
+        SceneManager.init(stage);
+
+        SceneManager.switchTo("MainMenu.fxml");
+        stage.setTitle("Racing Game Hauptmenü");
     }
 
     static void main() {
