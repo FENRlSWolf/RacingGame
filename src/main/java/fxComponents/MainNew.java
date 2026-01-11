@@ -1,4 +1,4 @@
-package fxTest;
+package fxComponents;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class MainNew extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainNew.class.getResource("/ui/test.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainNew.class.getResource("/ui/MainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Testseite");
         stage.setScene(scene);

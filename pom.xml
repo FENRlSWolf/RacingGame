@@ -41,7 +41,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>${javafx.maven.plugin.version}</version>
                 <configuration>
-                    <mainClass>fxTest.MainNew</mainClass>
+                    <mainClass>fxComponents.MainNew</mainClass>
                 </configuration>
             </plugin>
             <plugin>
