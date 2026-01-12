@@ -15,7 +15,7 @@ public class Vector2 {
     }
 
     public void subtract(Vector2 vector2) {
-        this.x = vector2.x;
-        this.y = vector2.y;
+        this.x -= vector2.x;
+        this.y -= vector2.y;
     }
 }
