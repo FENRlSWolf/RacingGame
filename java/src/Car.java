@@ -1,5 +1,4 @@
 import Helpers.Vector2;
-
 import java.awt.event.KeyListener;
 
 public class Car extends Object{
@@ -43,6 +42,5 @@ public class Car extends Object{
 
         return shortTermMovementVector;
     }
-
 
 }
