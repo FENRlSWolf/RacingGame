@@ -1,6 +1,7 @@
 package fxComponents.Controller;
 
 import carThings.Car;
+import fxComponents.AssetManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -86,13 +87,11 @@ public class GameController {
     }
 
     private void drawTrack(){
-        //Spielteppich Straße zum Test?
-        try (FileInputStream fis = new FileInputStream("C:\\Users\\Admin\\IdeaProjects\\RacingGame\\src\\main\\resources\\tracks\\Spieleteppich.png")){
-            Image image = new Image(fis);
-            gc.drawImage(image, 0, 0, 1280, 720);
-        } catch (IOException e){
-            System.err.println("PNG file not found: " + e.getMessage());
-        }
+        Image testTrack = AssetManager.TRACK_CARPET;
+        gc.drawImage(testTrack, 0, 0, 1280, 720);
+
+        Image testCar = AssetManager.CAR_RED;
+        gc.drawImage(testCar, 450,330, 30,55);
     }
 
     //must be called when scene switch happens
