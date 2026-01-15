@@ -1,4 +1,4 @@
-package fxComponents.Controller;
+package fxComponents.controller;
 
 import fxComponents.SceneManager;
 import javafx.fxml.FXML;

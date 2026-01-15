@@ -1,7 +1,6 @@
-package fxComponents.Controller;
+package fxComponents.controller;
 
 import fxComponents.SceneManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 

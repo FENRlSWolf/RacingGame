@@ -1,6 +1,6 @@
 package carThings;
 
-import Helpers.Vector2;
+import helpers.Vector2;
 
 public class Object {
     Vector2 position;

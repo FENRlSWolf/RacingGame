@@ -1,4 +1,4 @@
-package fxComponents.Controller;
+package fxComponents.controller;
 
 import carThings.Car;
 import fxComponents.AssetManager;
@@ -11,8 +11,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 

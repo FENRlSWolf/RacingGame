@@ -2,6 +2,7 @@ package fxComponents;
 
 import javafx.scene.image.Image;
 
+// final because nothing should be changed while running
 public final class AssetManager {
     private AssetManager() {}
 

@@ -1,8 +1,7 @@
 package carThings;
 
-import Helpers.Vector2;
+import helpers.Vector2;
 import javafx.scene.canvas.GraphicsContext;
-import carThings.PlayerInput;
 
 public class Car extends Object {
     //stats editable

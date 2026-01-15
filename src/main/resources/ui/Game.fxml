@@ -5,7 +5,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxComponents.Controller.GameController"
+            fx:controller="fxComponents.controller.GameController"
             prefHeight="720" prefWidth="1280">
     <Canvas fx:id="canvas"
             width="1280"
