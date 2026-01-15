@@ -1,6 +1,9 @@
+package carThings;
+
+import Helpers.Vector2;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.security.Key;
 
 public class PlayerInput {
     char accelChar;
@@ -61,7 +64,7 @@ public class PlayerInput {
         }
     };
 
-    public PlayerInput() {
+    public void playerInput() {
         playerInputSetup();
     }
 

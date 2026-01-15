@@ -2,6 +2,7 @@ package carThings;
 
 import Helpers.Vector2;
 import javafx.scene.canvas.GraphicsContext;
+import carThings.PlayerInput;
 
 public class Car extends Object {
     //stats editable
@@ -33,7 +34,7 @@ public class Car extends Object {
     }
 
     @Override
-    void update() {
+   public void update() {
         super.update();
         move(movementVector);
     }
@@ -85,6 +86,6 @@ public class Car extends Object {
 
 
     public void draw(GraphicsContext gc) {
-        gc.drawImage(carImage, position.x, position.y);
+        //gc.drawImage(carImage, position.x, position.y);
     }
 }

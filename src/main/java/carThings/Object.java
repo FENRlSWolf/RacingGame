@@ -3,13 +3,12 @@ package carThings;
 import Helpers.Vector2;
 
 public class Object {
-    public Object(double x, double y) {
-        this.position.x = x;
-        this.position.y = y;
-    }
-
     Vector2 position;
     float globalRotation;
+
+    public Object(double x, double y) {
+        this.position = new Vector2(x, y);
+    }
 
     void move(Vector2 vector2) {
         position.add(vector2);

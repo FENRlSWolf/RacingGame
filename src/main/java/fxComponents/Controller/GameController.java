@@ -7,8 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,9 +33,10 @@ public class GameController {
     @FXML
     public void initialize() {
         gc = canvas.getGraphicsContext2D();
-        playerCar = new Car(playerCar.getPosition().x, playerCar.getPosition().y);
+        playerCar = new Car(0, 0);
 
         Platform.runLater(this::setupInput);
+        drawTrack(); //just for testing :)
     }
 
     // Input
@@ -63,7 +67,7 @@ public class GameController {
 
     //Update all things that move
     private void update(double dt) {
-        playerCar.update(dt);
+        playerCar.update();
     }
 
     //Render all things you can see
@@ -83,7 +87,12 @@ public class GameController {
 
     private void drawTrack(){
         //Spielteppich Straße zum Test?
-        //gc.drawImage();
+        try (FileInputStream fis = new FileInputStream("C:\\Users\\Admin\\IdeaProjects\\RacingGame\\src\\main\\resources\\tracks\\Spieleteppich.png")){
+            Image image = new Image(fis);
+            gc.drawImage(image, 0, 0, 1280, 720);
+        } catch (IOException e){
+            System.err.println("PNG file not found: " + e.getMessage());
+        }
     }
 
     //must be called when scene switch happens
