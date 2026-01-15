@@ -1,6 +1,8 @@
+package carThings;
+
 import Helpers.Vector2;
 
-public class Car extends Object{
+public class Car extends Object {
     //stats editable
     double power; //influences acceleration
     double handlingStat; //influences cornerperformance
