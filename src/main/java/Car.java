@@ -9,12 +9,14 @@ public class Car extends Object{
 
 
 
+
     //stats that are based on other stats
     double accelStat;
     double traction;
 
     //other stats
     double dragInPercent = 5;
+
 
 
     //others
@@ -28,19 +30,41 @@ public class Car extends Object{
      * returns a MovementVector2 that is local to the cars rotation, thus the rotation has to somehow be account to
      * @return Vector2
      */
-    Vector2 calcShortTermMovementVector2() {
-        Vector2 shortTermMovementVector = new Vector2(0, 0);
+    Vector2 localTermMovementVector2() {
+        Vector2 localMovementVector = new Vector2(0, 0);
         //do calculation here
-
-
-
-
-
         //drag
-        shortTermMovementVector.x -= (shortTermMovementVector.x * dragInPercent);
+        localMovementVector.x -= (localMovementVector.x * dragInPercent);
+        if (localMovementVector.y <= 0) {
+            localMovementVector.x = 0;
+        }
 
-        return shortTermMovementVector;
+
+
+        if (playerInput.isHandBreaking()) {
+            //decrease traction and slow down
+
+
+        }
+        if(playerInput.isAccelerating()) {
+            localMovementVector.y += accelStat; //later add framedeltatime and traction
+        }
+        if (playerInput.isBreaking()) {
+            localMovementVector.y -= breakingPower; //later add framedeltatime and traction
+        }
+        if (playerInput.isGoingLeft()) {
+            localMovementVector.x -= handlingStat; //later add framedeltatime and traction
+        }
+        if (playerInput.isGoingRight()) {
+            localMovementVector.x += handlingStat; //later add framedeltatime and traction
+        }
+
+
+
+
+        return localMovementVector;
     }
+
 
 
 }

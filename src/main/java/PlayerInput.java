@@ -1,5 +1,9 @@
+import Helpers.Vector2;
+
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
 public class PlayerInput {
     char accelChar;
@@ -59,6 +63,47 @@ public class PlayerInput {
             }
         }
     };
+
+    public PlayerInput() {
+        playerInputSetup();
+    }
+
+    void playerInputSetup() {
+        accelChar = 'w';
+        breakChar = 'S';
+        goLeftChar = 'A';
+        goRightChar = 'D';
+        handBreakChar = ' ';
+    }
+
+    void calcInputVector() {
+        Vector2 inputVector = new Vector2(0 ,0);
+
+        if (isHandBreaking()) {
+            //decrease traction and slow down
+
+
+        }
+        if(isAccelerating()) {
+            inputVector.y = 1; //later add framedeltatime and traction
+        }
+        if (isBreaking()) {
+            inputVector.y = -1; //later add framedeltatime and traction
+        }
+        if (isGoingLeft()) {
+            inputVector.x = -1; //later add framedeltatime and traction
+        }
+        if (isGoingRight()) {
+            inputVector.x = 1; //later add framedeltatime and traction
+        }
+
+        inputVector.normalize();
+        System.out.println(inputVector);
+        System.out.println(isAccelerating());
+    }
+
+
+
 
     public boolean isAccelerating() {
         return accelerating;

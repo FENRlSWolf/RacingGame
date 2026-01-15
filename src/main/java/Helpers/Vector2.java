@@ -18,4 +18,24 @@ public class Vector2 {
         this.x -= vector2.x;
         this.y -= vector2.y;
     }
+
+    public void rotate(float degrees) {
+        x = x * Math.cos(degrees) - y * Math.sin(degrees);
+        y = x * Math.sin(degrees) + y * Math.cos(degrees);
+    }
+
+    public double magnitude() {
+        return Math.sqrt(x*x + y*y);
+    }
+
+    public void normalize() {
+        x /= magnitude();
+        y /= magnitude();
+    }
+
+    @Override
+    public String toString() {
+        return "x=" + x +
+                ", y=" + y;
+    }
 }
