@@ -1,6 +1,9 @@
-import Helpers.Vector2;
+package carThings;
 
-public class Car extends Object{
+import Helpers.Vector2;
+import javafx.scene.canvas.GraphicsContext;
+
+public class Car extends Object {
     //stats editable
     double power; //influences acceleration
     double handlingStat; //influences cornerperformance
@@ -25,6 +28,15 @@ public class Car extends Object{
 
     Vector2 movementVector;
 
+    public Car(double x, double y) {
+        super(x, y);
+    }
+
+    @Override
+    void update() {
+        super.update();
+        move(movementVector);
+    }
 
     /**
      * returns a MovementVector2 that is local to the cars rotation, thus the rotation has to somehow be account to
@@ -33,6 +45,11 @@ public class Car extends Object{
     Vector2 localTermMovementVector2() {
         Vector2 localMovementVector = new Vector2(0, 0);
         //do calculation here
+
+
+
+
+
         //drag
         localMovementVector.x -= (localMovementVector.x * dragInPercent);
         if (localMovementVector.y <= 0) {
@@ -67,4 +84,7 @@ public class Car extends Object{
 
 
 
+    public void draw(GraphicsContext gc) {
+        gc.drawImage(carImage, position.x, position.y);
+    }
 }

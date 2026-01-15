@@ -10,5 +10,6 @@
         <Label text="Singleplayer ausgewählt"/>
         <Label text="Streckenauswahl"/>
         <ComboBox fx:id="trackBox" prefWidth="200" />
+        <Button text="Start" onAction="#spielStarten"/>
     </VBox>
 </AnchorPane>
