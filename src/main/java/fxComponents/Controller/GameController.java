@@ -30,7 +30,7 @@ public class GameController {
     @FXML
     public void initialize() {
         gc = canvas.getGraphicsContext2D();
-        playerCar = new Car(x, y); //constructor necessary
+        playerCar = new Car(playerCar.getPosition().x, playerCar.getPosition().y);
 
         Platform.runLater(this::setupInput);
     }
@@ -72,11 +72,11 @@ public class GameController {
         gc.save();
 
         //camera follows car
-        gc.translate(canvas.getWidth() / 2 - playerCar.getX(),
-                canvas.getHeight() / 2 - playerCar.getY); //getter for coordinates is needed
+        gc.translate(canvas.getWidth() / 2 - playerCar.getPosition().x,
+                canvas.getHeight() / 2 - playerCar.getPosition().y);
 
         drawTrack();
-        playerCar.draw(gc); //draw method needed
+        playerCar.draw(gc);
 
         gc.restore();
     }

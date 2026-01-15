@@ -1,6 +1,7 @@
 package carThings;
 
 import Helpers.Vector2;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Car extends Object {
     //stats editable
@@ -25,6 +26,15 @@ public class Car extends Object {
 
     Vector2 movementVector;
 
+    public Car(double x, double y) {
+        super(x, y);
+    }
+
+    @Override
+    void update() {
+        super.update();
+        move(movementVector);
+    }
 
     /**
      * returns a MovementVector2 that is local to the cars rotation, thus the rotation has to somehow be account to
@@ -45,4 +55,7 @@ public class Car extends Object {
     }
 
 
+    public void draw(GraphicsContext gc) {
+        gc.drawImage(carImage, position.x, position.y);
+    }
 }
