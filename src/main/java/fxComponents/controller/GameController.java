@@ -103,4 +103,9 @@ public class GameController {
             gameLoop.stop();
         }
     }
+
+
+    public Set<KeyCode> getKeyPressed() {
+        return keyPressed;
+    }
 }
