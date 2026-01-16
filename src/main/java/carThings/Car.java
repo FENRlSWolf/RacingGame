@@ -118,13 +118,18 @@ public class Car extends GameObject {
     public void update(double dt, PlayerInput input) {
         if (input.accelerate()) speed += ACCEL * dt;
         if (input.brake()) speed -= ACCEL *dt;
-
+        if (speed != 0) {
+            if (input.left()) rotation -= TURN_SPEED * dt;
+            if (input.right()) rotation += TURN_SPEED * dt;
+        }
         //speed limitation
         speed = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, speed));
         speed *= DRAG;
+        if(speed <= 5 && speed >= -5) {
+            speed = 0;
+        }
 
-        if (input.left()) rotation -= TURN_SPEED * dt;
-        if (input.right()) rotation += TURN_SPEED * dt;
+
 
         double rad = Math.toRadians(rotation);
 
