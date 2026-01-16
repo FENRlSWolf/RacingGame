@@ -1,9 +1,12 @@
 package carThings;
 
-import helpers.Vector2;
+import fxComponents.AssetManager;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Car extends Object {
+public class Car extends GameObject {
+    //Linecoment just for testing
+
+    /*
     //stats editable
     double power; //influences acceleration
     double handlingStat; //influences cornerperformance
@@ -37,11 +40,13 @@ public class Car extends Object {
         super.update();
         move(movementVector);
     }
+    */
 
     /**
      * returns a MovementVector2 that is local to the cars rotation, thus the rotation has to somehow be account to
      * @return Vector2
      */
+    /*
     Vector2 localTermMovementVector2() {
         Vector2 localMovementVector = new Vector2(0, 0);
         //do calculation here
@@ -86,5 +91,52 @@ public class Car extends Object {
 
     public void draw(GraphicsContext gc) {
         //gc.drawImage(carImage, position.x, position.y);
+    }
+     */
+
+    //Unit: Pixel per Second (PPS)
+    private double speed = 0;
+
+    //Unit: Degrees
+    private double rotation = 0;
+
+    //Unit: px/s²
+    private static final double ACCEL = 200;
+
+    //Unit: px/s
+    private static final double MAX_SPEED = 400;
+
+    //Unit: dgr/s (degrees per second)
+    private static final double TURN_SPEED = 180;
+
+    //unitless
+    private static final double DRAG = 0.98;
+
+    public Car(double x, double y){
+        super(x, y);
+    }
+    public void update(double dt, PlayerInput input) {
+        if (input.accelerate()) speed += ACCEL * dt;
+        if (input.brake()) speed -= ACCEL *dt;
+
+        //speed limitation
+        speed = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, speed));
+        speed *= DRAG;
+
+        if (input.left()) rotation -= TURN_SPEED * dt;
+        if (input.right()) rotation += TURN_SPEED * dt;
+
+        double rad = Math.toRadians(rotation);
+
+        position.x += Math.sin(rad) * speed * dt;
+        position.y -= Math.cos(rad) * speed *dt;
+    }
+
+    public void draw(GraphicsContext gc){
+        gc.save();
+        gc.translate(position.x,  position.y);
+        gc.rotate(rotation);
+        gc.drawImage(AssetManager.CAR_RED, -15, -27, 20, 45);
+        gc.restore();
     }
 }

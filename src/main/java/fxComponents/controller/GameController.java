@@ -1,6 +1,7 @@
 package fxComponents.controller;
 
 import carThings.Car;
+import carThings.PlayerInput;
 import fxComponents.AssetManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -28,14 +29,21 @@ public class GameController {
 
     private long lastTime = 0;
 
+
+    //Testing:
+    private PlayerInput input;
+
     //JavaFX lifecycle
     @FXML
     public void initialize() {
         gc = canvas.getGraphicsContext2D();
         playerCar = new Car(0, 0);
 
-        Platform.runLater(this::setupInput);
-        drawTrack(); //just for testing :)
+        Platform.runLater(() -> {
+            setupInput();
+            input = new PlayerInput(keyPressed);
+            startGameLoop();
+        });
     }
 
     // Input
@@ -66,7 +74,7 @@ public class GameController {
 
     //Update all things that move
     private void update(double dt) {
-        playerCar.update();
+        playerCar.update(dt, input);
     }
 
     //Render all things you can see
@@ -86,10 +94,7 @@ public class GameController {
 
     private void drawTrack(){
         Image testTrack = AssetManager.TRACK_CARPET;
-        gc.drawImage(testTrack, 0, 0, 1280, 720);
-
-        Image testCar = AssetManager.CAR_RED;
-        gc.drawImage(testCar, 450,330, 30,55);
+        gc.drawImage(testTrack, 0, 0, 2560, 1440);
     }
 
     //must be called when scene switch happens

@@ -2,11 +2,12 @@ package carThings;
 
 import helpers.Vector2;
 
-public class Object {
+//renamed due to confusion with java.lang.Object
+public class GameObject {
     Vector2 position;
     float globalRotation;
 
-    public Object(double x, double y) {
+    public GameObject(double x, double y) {
         this.position = new Vector2(x, y);
     }
 
