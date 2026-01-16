@@ -19,6 +19,7 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/ui/" + fxmlFile));
             Scene scene = new Scene(loader.load(), 320, 240);
             stage.setScene(scene);
+            stage.setFullScreen(true);
             stage.show();
         } catch (Exception e) {
             throw new RuntimeException("Kann FXML nicht laden: " + fxmlFile, e);

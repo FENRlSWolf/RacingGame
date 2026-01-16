@@ -8,8 +8,8 @@
             fx:controller="fxComponents.controller.GameController"
             prefHeight="720" prefWidth="1280">
     <Canvas fx:id="canvas"
-            width="1280"
-            height="720"
+            width="1920"
+            height="1200"
             AnchorPane.topAnchor="0"
             AnchorPane.bottomAnchor="0"
             AnchorPane.leftAnchor="0"

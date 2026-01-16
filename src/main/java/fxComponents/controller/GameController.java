@@ -64,7 +64,6 @@ public class GameController {
                 }
                 double deltaTime = (now - lastTime) / 1_000_000_000.0;
                 lastTime = now;
-
                 update(deltaTime);
                 render();
             }
@@ -83,8 +82,8 @@ public class GameController {
         gc.save();
 
         //camera follows car
-        gc.translate(canvas.getWidth() / 2 - playerCar.getPosition().x,
-                canvas.getHeight() / 2 - playerCar.getPosition().y);
+        gc.translate(canvas.getWidth() / 2  - playerCar.getPosition().x,
+                canvas.getHeight() / 2  - playerCar.getPosition().y);
 
         drawTrack();
         playerCar.draw(gc);
@@ -94,7 +93,7 @@ public class GameController {
 
     private void drawTrack(){
         Image testTrack = AssetManager.TRACK_CARPET;
-        gc.drawImage(testTrack, 0, 0, 2560, 1440);
+        gc.drawImage(testTrack, 0, 0, 5120, 2880);
     }
 
     //must be called when scene switch happens

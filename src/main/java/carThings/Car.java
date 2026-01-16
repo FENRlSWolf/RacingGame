@@ -136,7 +136,7 @@ public class Car extends GameObject {
         gc.save();
         gc.translate(position.x,  position.y);
         gc.rotate(rotation);
-        gc.drawImage(AssetManager.CAR_RED, -15, -27, 20, 45);
+        gc.drawImage(AssetManager.CAR_RED, -10, -23, 20, 45);
         gc.restore();
     }
 }
