@@ -117,6 +117,7 @@ public class Car extends GameObject {
     //Unit: dgr/s (degrees per second)
     private static final double TURN_ACCEL = 30; //was 180
     private static final double MAX_TURN_SPEED = 200;
+    private static final double MIN_TURN_SPEED = MAX_TURN_SPEED * (-1);
 
     //unitless
     private static final double DRAG = 0.98;
@@ -163,6 +164,9 @@ public class Car extends GameObject {
             turnSpeed += TURN_ACCEL * speed/MAX_SPEED;
             if(turnSpeed > MAX_TURN_SPEED) {
                 turnSpeed = MAX_TURN_SPEED;
+                //checking "reverse" turnspeed cap
+            } else if (turnSpeed < MIN_TURN_SPEED ) {
+                turnSpeed = MIN_TURN_SPEED;
             }
         } else {
             turnSpeed = 0;
