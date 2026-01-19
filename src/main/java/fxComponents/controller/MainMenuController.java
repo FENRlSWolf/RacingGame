@@ -1,6 +1,6 @@
 package fxComponents.controller;
 
-import fxComponents.SceneManager;
+import fxComponents.RootManager;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Label;
@@ -12,7 +12,7 @@ public class MainMenuController {
 
     @FXML
     public void onSingleplayerButtonClick() {
-        SceneManager.switchTo("Singleplayer.fxml");
+        RootManager.switchTo("Singleplayer.fxml");
     }
 
     public void onMultiplayerButtonClick() {

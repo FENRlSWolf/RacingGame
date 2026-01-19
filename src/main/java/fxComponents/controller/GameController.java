@@ -3,7 +3,7 @@ package fxComponents.controller;
 import carThings.Car;
 import carThings.PlayerInput;
 import fxComponents.AssetManager;
-import fxComponents.SceneManager;
+import fxComponents.RootManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -86,8 +86,8 @@ public class GameController {
 //        gc.translate(canvas.getWidth() / 2  - playerCar.getPosition().x,
 //                canvas.getHeight() / 2  - playerCar.getPosition().y);
 
-        gc.translate(SceneManager.windowWidth() / 2  - playerCar.getPosition().x,
-                SceneManager.windowHeight() / 2  - playerCar.getPosition().y);
+        gc.translate(RootManager.windowWidth() / 2  - playerCar.getPosition().x,
+                RootManager.windowHeight() / 2  - playerCar.getPosition().y);
 
         drawTrack();
         playerCar.draw(gc);

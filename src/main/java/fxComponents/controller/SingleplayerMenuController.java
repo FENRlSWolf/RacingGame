@@ -1,6 +1,6 @@
 package fxComponents.controller;
 
-import fxComponents.SceneManager;
+import fxComponents.RootManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
@@ -18,6 +18,6 @@ public class SingleplayerMenuController {
     }
 
     public void spielStarten() {
-        SceneManager.switchTo("Game.fxml");
+        RootManager.switchTo("Game.fxml");
     }
 }
