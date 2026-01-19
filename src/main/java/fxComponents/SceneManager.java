@@ -25,4 +25,12 @@ public class SceneManager {
             throw new RuntimeException("Kann FXML nicht laden: " + fxmlFile, e);
         }
     }
+
+    public static double windowWidth(){
+        return stage.getScene().getWidth();
+    }
+
+    public static double windowHeight(){
+        return stage.getScene().getHeight();
+    }
 }
