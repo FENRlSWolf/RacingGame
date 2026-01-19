@@ -92,14 +92,22 @@ public class Car extends GameObject {
     public void draw(GraphicsContext gc) {
         //gc.drawImage(carImage, position.x, position.y);
     }
-     */
+  */
+
+    //connectors
+    PlayerInput input;
+
 
     //Unit: Pixel per Second (PPS)
     private double speed = 0;
+    private double turnSpeed = 0;
+
+    //Unit: percent
+    private double traction = 1;
 
     //Unit: Degrees
     private double rotation = 0;
-
+    private double moveDirection = 0;
     //Unit: px/s²
     private static final double ACCEL = 200;
 
@@ -107,7 +115,8 @@ public class Car extends GameObject {
     private static final double MAX_SPEED = 400;
 
     //Unit: dgr/s (degrees per second)
-    private static final double TURN_SPEED = 180;
+    private static final double TURN_ACCEL = 30; //was 180
+    private static final double MAX_TURN_SPEED = 200;
 
     //unitless
     private static final double DRAG = 0.98;
@@ -115,27 +124,63 @@ public class Car extends GameObject {
     public Car(double x, double y){
         super(x, y);
     }
-    public void update(double dt, PlayerInput input) {
+    public void update(double dt, PlayerInput _input) {
+        this.input = _input;
+        steeringCalc(dt);
+        if (input.handBrake()) traction -= 0.5;
+        else {
+            //should be changed in the future if there are more sources to change the traction
+            traction = 1;
+        }
         if (input.accelerate()) speed += ACCEL * dt;
         if (input.brake()) speed -= ACCEL *dt;
-        if (speed != 0) {
-            if (input.left()) rotation -= TURN_SPEED * dt;
-            if (input.right()) rotation += TURN_SPEED * dt;
-        }
+
+
+
+
         //speed limitation
         speed = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, speed));
         speed *= DRAG;
-        if(speed <= 5 && speed >= -5) {
+        int zeroVelThreshold = 10;
+        if(speed <= zeroVelThreshold && speed >= -zeroVelThreshold && !(input.accelerate() || input.brake())) {
             speed = 0;
         }
 
 
 
-        double rad = Math.toRadians(rotation);
+        double rad = Math.toRadians(moveDirection);
 
         position.x += Math.sin(rad) * speed * dt;
         position.y -= Math.cos(rad) * speed *dt;
     }
+
+    private void steeringCalc(double dt) {
+        int steering = input.steering();
+        System.out.println(steering);
+
+        if(steering != 0) {
+            //car is turning
+            turnSpeed += TURN_ACCEL * speed/MAX_SPEED;
+            if(turnSpeed > MAX_TURN_SPEED) {
+                turnSpeed = MAX_TURN_SPEED;
+            }
+        } else {
+            turnSpeed = 0;
+        }
+        if (speed != 0) {
+            //car orientation
+            if (steering == -1) {
+                rotation -= turnSpeed * dt;
+                moveDirection -= turnSpeed * dt * traction;
+            }
+            if (steering == 1) {
+                rotation += turnSpeed * dt;
+                moveDirection = rotation + (turnSpeed * dt * traction);
+            }
+
+        }
+    }
+
 
     public void draw(GraphicsContext gc){
         gc.save();

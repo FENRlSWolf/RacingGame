@@ -3,6 +3,8 @@ package carThings;
 import helpers.Vector2;
 import javafx.scene.input.KeyCode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class PlayerInput {
@@ -16,11 +18,32 @@ public class PlayerInput {
 
     public boolean accelerate() {return keys.contains(accelChar);}
     public boolean brake() {return keys.contains(breakChar);}
-    public boolean left() {return  keys.contains(goLeftChar);}
-    public boolean right() {return  keys.contains(goRightChar);}
+    public boolean left;
+    public boolean right;
     public boolean handBrake() {return  keys.contains(handBrakeChar);}
 
+    public void inputUpdate() {
+        steering();
+    }
 
+
+    public int steering() {
+        List<KeyCode> keyCodes = new ArrayList<>(keys);
+        System.out.println(keyCodes);
+        for(int i = keyCodes.size()-1; i >= 0; i--) {
+            if (keyCodes.get(i).equals(goLeftChar)) {
+                left = true;
+                right = false;
+                return -1;
+            }
+            if (keyCodes.get(i).equals(goRightChar)) {
+                right = true;
+                left = false;
+                return 1;
+            }
+        }
+        return 0;
+}
 
     KeyCode accelChar;
     KeyCode breakChar;
@@ -29,7 +52,6 @@ public class PlayerInput {
     KeyCode handBrakeChar;
 
 
-    private Vector2 inputVector = new Vector2(0,0);
 
     void playerInputSetup() {
         accelChar = KeyCode.W;
@@ -40,34 +62,5 @@ public class PlayerInput {
     }
 
 
-
-    void calcInputVector() {
-        if (handBrake()) {
-            //decrease traction and slow down
-
-
-        }
-        if(accelerate()) {
-            inputVector.y = 1; //later add framedeltatime and traction
-        }
-        if (brake()) {
-            inputVector.y = -1; //later add framedeltatime and traction
-        }
-        if (left()) {
-            inputVector.x = -1; //later add framedeltatime and traction
-        }
-        if (right()) {
-            inputVector.x = 1; //later add framedeltatime and traction
-        }
-
-
-        System.out.println(inputVector);
-    }
-
-
-
-    public Vector2 getInputVector() {
-        return inputVector;
-    }
 
 }
