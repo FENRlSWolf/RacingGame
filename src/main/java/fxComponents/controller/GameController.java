@@ -82,10 +82,6 @@ public class GameController {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.save();
 
-        //camera follows car
-//        gc.translate(canvas.getWidth() / 2  - playerCar.getPosition().x,
-//                canvas.getHeight() / 2  - playerCar.getPosition().y);
-
         gc.translate(RootManager.windowWidth() / 2  - playerCar.getPosition().x,
                 RootManager.windowHeight() / 2  - playerCar.getPosition().y);
 
@@ -100,13 +96,12 @@ public class GameController {
         gc.drawImage(testTrack, 0, 0, 5120, 2880);
     }
 
-    //must be called when scene switch happens
+    //must be called when root switch happens
     public void stopGame(){
         if (gameLoop != null){
             gameLoop.stop();
         }
     }
-
 
     public Set<KeyCode> getKeyPressed() {
         return keyPressed;

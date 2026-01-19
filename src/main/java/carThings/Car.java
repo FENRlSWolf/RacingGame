@@ -117,7 +117,7 @@ public class Car extends GameObject {
     //Unit: dgr/s (degrees per second)
     private static final double TURN_ACCEL = 30; //was 180
     private static final double MAX_TURN_SPEED = 200;
-    private static final double MIN_TURN_SPEED = MAX_TURN_SPEED * (-1);
+    private static final double MIN_TURN_SPEED = -MAX_TURN_SPEED;
 
     //unitless
     private static final double DRAG = 0.98;
