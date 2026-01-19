@@ -3,8 +3,8 @@ carThings\GameObject.class
 fxComponents\Controller\MainMenuController.class
 carThings\Car.class
 carThings\PlayerInput.class
+fxComponents\RootManager.class
 fxComponents\AssetManager.class
 fxComponents\Controller\SingleplayerMenuController.class
-fxComponents\SceneManager.class
 fxComponents\Controller\GameController$1.class
 fxComponents\Controller\GameController.class
