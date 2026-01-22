@@ -112,7 +112,7 @@ public class Car extends GameObject {
     private static final double ACCEL = 200;
 
     //Unit: px/s
-    private static final double MAX_SPEED = 400;
+    private static final double MAX_SPEED = 3200;
 
     //Unit: dgr/s (degrees per second)
     private static final double TURN_ACCEL = 30; //was 180
@@ -192,5 +192,9 @@ public class Car extends GameObject {
         gc.rotate(rotation);
         gc.drawImage(AssetManager.CAR_RED, -10, -23, 20, 45);
         gc.restore();
+
+        //debug for showing car coordinates
+//        System.out.println("X: " + position.x + " Y: " + position.y);
+        System.out.println("Geschwindigkeit: " + speed);
     }
 }

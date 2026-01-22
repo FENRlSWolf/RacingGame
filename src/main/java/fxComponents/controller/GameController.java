@@ -38,7 +38,8 @@ public class GameController {
     @FXML
     public void initialize() {
         gc = canvas.getGraphicsContext2D();
-        playerCar = new Car(0, 0);
+        playerCar = new Car(6056.133065623784, 9210.48897828335);
+
 
         Platform.runLater(() -> {
             setupInput();
@@ -92,8 +93,8 @@ public class GameController {
     }
 
     private void drawTrack(){
-        Image testTrack = AssetManager.TRACK_CARPET;
-        gc.drawImage(testTrack, 0, 0, 5120, 2880);
+        Image testTrack = AssetManager.getSelectedTrack();
+        gc.drawImage(testTrack, 0, 0, 10_000, 10_000);
     }
 
     //must be called when root switch happens

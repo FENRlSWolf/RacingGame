@@ -1,5 +1,6 @@
 package fxComponents.controller;
 
+import fxComponents.AssetManager;
 import fxComponents.RootManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -13,8 +14,13 @@ public class SingleplayerMenuController {
         trackBox.getItems().addAll(
                 "Monza",
                 "Spa",
-                "Nürburgring"
+                "Nürburgring",
+                "Red Bull Ring"
         );
+
+        trackBox.setOnAction(e -> {
+            AssetManager.setSelectedTrack(trackBox.getValue());
+        });
     }
 
     public void spielStarten() {
