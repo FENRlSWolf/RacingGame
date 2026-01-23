@@ -32,13 +32,13 @@ public class PlayerInput {
         System.out.println(keyCodes);
         for(int i = keyCodes.size()-1; i >= 0; i--) {
             if (keyCodes.get(i).equals(goLeftChar)) {
-                left = true;
-                right = false;
+                //left = true;
+                //right = false;
                 return -1;
             }
             if (keyCodes.get(i).equals(goRightChar)) {
-                right = true;
-                left = false;
+                //right = true;
+                //left = false;
                 return 1;
             }
         }

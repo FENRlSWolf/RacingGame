@@ -18,14 +18,14 @@ public class Car extends GameObject {
     //Unit: Degrees
     private double rotation = 0;
     //Unit: px/s²
-    private static final double ACCEL = 200;
+    private static final double ACCEL = 3;
 
     //Unit: px/s
-    private static final double MAX_SPEED = 600;
+    private static final double MAX_SPEED = 30;
 
     //Unit: dgr/s (degrees per second)
-    private static final double TURN_ACCEL = 30; //was 180
-    private static final double MAX_TURN_SPEED = 200;
+    private static final double TURN_ACCEL = 0.005; //was 180
+    private static final double MIN_TURN_SPEED = 80;
 
     //unitless
     private static final double DRAG = 0.995;
@@ -56,48 +56,46 @@ public class Car extends GameObject {
                     forward.x * ACCEL,
                     forward.y * ACCEL
             );
-
-            velocity.x += accelerationForce.x * dt;
-            velocity.y += accelerationForce.y * dt;
+            velocity.add(accelerationForce.multiplyAndReturn(dt));
         }
         if (input.brake()) {
             Vector2 accelerationForce = new Vector2(
                     forward.x * ACCEL,
                     forward.y * ACCEL
             );
-
-            velocity.x -= accelerationForce.x * dt;
-            velocity.y -= accelerationForce.y * dt;
+            velocity.subtract(accelerationForce.multiplyAndReturn(dt));
+        }
+        //just add drag when we are not accelerating or braking
+        if(!(input.accelerate() || input.brake())){
+            velocity.multiply(DRAG);
         }
 
+        //limit speed
+        if(velocity.magnitude() >= MAX_SPEED) {
+            velocity.setToLength(MAX_SPEED);
 
-        velocity.x *= DRAG;
-        velocity.y *= DRAG;
+            System.out.println("Geschwindigkeit: " + velocity.magnitude());
+        }
 
-//        int zeroVelThreshold = 10;
-//        if(speed <= zeroVelThreshold && speed >= -zeroVelThreshold && !(input.accelerate() || input.brake())) {
-//            speed = 0;
-//        }
+        //at which speed the car completely halts
+        int zeroVelThreshold = 2;
+        if(velocity.magnitude() <= zeroVelThreshold && !(input.accelerate() || input.brake())) {
+            velocity = new Vector2(0,0);
+        }
 
-        position.x +=velocity.x * dt;
-        position.y += velocity.y *dt;
+        position.add(velocity);
     }
 
     private void steeringCalc(double dt) {
         int steering = input.steering();
-        System.out.println(steering);
+
 
         //steering
         if (velocity.magnitude() != 0) {
-            double steeringStrengh = (velocity.magnitude()/ MAX_SPEED);
-            steeringStrengh = Math.min(1, steeringStrengh) * 3.5;
+            //double steeringStrengh = (velocity.magnitude()/ MAX_SPEED);
+            //steeringStrengh = Math.min(1, steeringStrengh) * 3.5;
+            rotation += (MIN_TURN_SPEED +  TURN_ACCEL* velocity.magnitude()) * steering * dt; //  * steeringStrengh
 
-            if (steering == -1) {
-                rotation -= TURN_ACCEL * steeringStrengh * dt;
-            }
-            if (steering == 1) {
-                rotation += TURN_ACCEL * steeringStrengh * dt;
-            }
 
             forward.x = Math.sin(Math.toRadians(rotation));
             forward.y = -Math.cos(Math.toRadians(rotation));
@@ -121,6 +119,6 @@ public class Car extends GameObject {
 
         //debug for showing car coordinates
         System.out.println("X: " + position.x + " Y: " + position.y);
-        System.out.println("Geschwindigkeit: " + velocity.magnitude());
+//        System.out.println("Geschwindigkeit: " + velocity.magnitude());
     }
 }

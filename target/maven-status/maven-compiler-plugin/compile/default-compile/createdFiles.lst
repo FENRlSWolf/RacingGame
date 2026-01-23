@@ -1,10 +1,10 @@
 fxComponents\MainNew.class
 carThings\GameObject.class
-fxComponents\Controller\MainMenuController.class
 carThings\Car.class
 carThings\PlayerInput.class
+fxComponents\controller\GameController.class
 fxComponents\RootManager.class
+fxComponents\controller\SingleplayerMenuController.class
+fxComponents\controller\GameController$1.class
+fxComponents\controller\MainMenuController.class
 fxComponents\AssetManager.class
-fxComponents\Controller\SingleplayerMenuController.class
-fxComponents\Controller\GameController$1.class
-fxComponents\Controller\GameController.class
